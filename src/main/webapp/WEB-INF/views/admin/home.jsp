@@ -1,153 +1,154 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Sản phẩm</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        #navbar {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-align: left;
-        }
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .navbar-header a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 24px;
-        }
-        .navbar-buttons ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .navbar-buttons ul li {
-            margin-left: 15px;
-        }
-        .navbar-buttons ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        #sidebar {
-            width: 200px;
-            background-color: #222;
-            position: absolute;
-            top: 50px;
-            bottom: 0;
-            left: 0;
-            padding: 20px 0;
-        }
-        .nav-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .nav-list li {
-            padding: 10px 20px;
-        }
-        .nav-list li a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-        }
-        .nav-list li a:hover {
-            background-color: #444;
-        }
-        .main-container {
-            margin-left: 220px;
-            padding: 20px;
-        }
-        h1 {
-            margin-top: 0;
-        }
-        .table-responsive {
-            margin-top: 20px;
-        }
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-        }
-        .table th, .table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        .table th {
-            background-color: #f4f4f4;
-        }
-        .btn {
-            padding: 5px 10px;
-            margin-right: 5px;
-            text-decoration: none;
-            color: #fff;
-            border-radius: 3px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        .modal-body {
-            padding: 10px 0;
-        }
-        .modal-footer {
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-            text-align: right;
-        }
-        img {
-            max-width: 200px;
-            height: auto;
-        }
-    </style>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #ffe6f0;
+            }
+            #navbar {
+                background-color: #ff66b2;
+                color: #fff;
+                padding: 10px 20px;
+                text-align: left;
+            }
+            .navbar-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navbar-header a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 24px;
+            }
+            .navbar-buttons ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            .navbar-buttons ul li {
+                margin-left: 15px;
+            }
+            .navbar-buttons ul li a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 16px;
+            }
+            #sidebar {
+                width: 200px;
+                background-color: #ff3399;
+                position: absolute;
+                top: 50px;
+                bottom: 0;
+                left: 0;
+                padding: 20px 0;
+            }
+            .nav-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .nav-list li {
+                padding: 10px 20px;
+            }
+            .nav-list li a {
+                color: #fff;
+                text-decoration: none;
+                display: block;
+            }
+            .nav-list li a:hover {
+                background-color: #ff4da6;
+            }
+            .main-container {
+                margin-left: 220px;
+                padding: 20px;
+            }
+            h1 {
+                margin-top: 0;
+            }
+            .table-responsive {
+                margin-top: 20px;
+            }
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                background-color: #fff;
+            }
+            .table th, .table td {
+                padding: 10px;
+                border: 1px solid #ddd;
+                text-align: left;
+            }
+            .table th {
+                background-color: #ffccdf;
+            }
+            .btn {
+                padding: 5px 10px;
+                margin-right: 5px;
+                text-decoration: none;
+                color: #fff;
+                border-radius: 3px;
+            }
+            .btn-primary {
+                background-color: #ff3399;
+            }
+            .btn-warning {
+                background-color: #ffcc00;
+            }
+            .btn-danger {
+                background-color: #ff1a66;
+            }
+            .btn-info {
+                background-color: #ff66b2;
+            }
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(255,102,178,0.4);
+                padding-top: 60px;
+            }
+            .modal-content {
+                background-color: #fff;
+                margin: 5% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+            .modal-body {
+                padding: 10px 0;
+            }
+            .modal-footer {
+                padding-top: 10px;
+                border-top: 1px solid #ddd;
+                text-align: right;
+            }
+            img {
+                max-width: 200px;
+                height: auto;
+            }
+        </style>
 </head>
 <body>
 <!-- Header -->
@@ -207,7 +208,7 @@
                         <td>
                             <button class="btn btn-warning" onclick="showModal('editProductModal', ${product.id})">Sửa</button>
                             <button class="btn btn-danger" onclick="showModal('deleteProductModal', ${product.id})">Xóa</button>
-                            <button class="btn btn-info" onclick="showModal('viewProductModal', ${product.id})">Hiển thị</button>
+                            <button class="btn btn-info" onclick="showModal('viewProductModal', ${product.id} )">Hiển thị</button>
                         </td>
                     </tr>
                 </c:forEach>
@@ -242,11 +243,11 @@
                 <textarea id="description" name="description"></textarea>
 
                 <label for="category">Danh mục:</label>
-                <select id="category" name="category" required>
-                    <option value="Danh mục 1">Danh mục 1</option>
-                    <option value="Danh mục 2">Danh mục 2</option>
-                    <option value="Danh mục 3">Danh mục 3</option>
-                </select>
+                <select id="editCategory" name="category" required>
+                                   <option value="Danh mục 1">Điện thoại</option>
+                                   <option value="Danh mục 2">Phụ kiện</option>
+                                   <option value="Danh mục 3">	Máy tính</option>
+                               </select>
 
                 <label for="status">Trạng thái:</label>
                 <select id="status" name="status" required>
